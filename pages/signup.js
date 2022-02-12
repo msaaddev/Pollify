@@ -6,9 +6,11 @@ import 'react-popupbox/dist/react-popupbox.css';
 // firebase
 import {
 	getAuth,
-	onAuthStateChanged,
 	RecaptchaVerifier,
-	signInWithPhoneNumber
+	signInWithPhoneNumber,
+	getFirestore,
+	setDoc,
+	doc
 } from 'config/firebase';
 
 // components
@@ -101,13 +103,12 @@ const SignUp = () => {
 	const handleLoginWithPhoneNum = e => {
 		e.preventDefault();
 		clearErrs();
-
+		const db = getFirestore();
 		const appVerifier = window.recaptchaVerifier;
 
 		signInWithPhoneNumber(auth, phoneNum, appVerifier)
 			.then(confirmationResult => {
-				openPopupbox();
-
+				// get code from user
 				openPopupbox().then(() => {
 					const code = document.getElementById('code').value;
 					confirmationResult
@@ -119,6 +120,13 @@ const SignUp = () => {
 						.catch(err => {
 							setErr(JSON.stringify(err.code));
 						});
+
+					setDoc(doc(db, 'userData', phoneNum), {
+						name,
+						gender,
+						phoneNum,
+						pollList: []
+					});
 				});
 
 				window.confirmationResult = confirmationResult;
