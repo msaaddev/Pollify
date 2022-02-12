@@ -1,10 +1,11 @@
 import { initializeApp } from 'firebase/app';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
+
 import {
 	getAuth,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-	onAuthStateChanged,
-	signOut
+	signOut,
+	RecaptchaVerifier,
+	signInWithPhoneNumber
 } from 'firebase/auth';
 
 const config = {
@@ -20,8 +21,10 @@ initializeApp(config);
 
 export {
 	getAuth,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-	onAuthStateChanged,
-	signOut
+	signInWithPhoneNumber,
+	RecaptchaVerifier,
+	signOut,
+	getFirestore,
+	setDoc,
+	doc
 };

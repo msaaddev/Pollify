@@ -1,18 +1,39 @@
 import css from 'styles/Input.module.css';
 
-const Input = ({ htmlFor, label, type, autoFocus, value, onChange, err }) => {
+const Input = ({
+	id,
+	htmlFor,
+	label,
+	type,
+	autoFocus = false,
+	value,
+	onChange,
+	err,
+	placeholder,
+	dropdown
+}) => {
 	return (
 		<div className={css.wrapper}>
 			<label htmlFor={htmlFor}>{label}</label>
 			<br />
-			<input
-				type={type}
-				autoFocus={autoFocus}
-				required
-				value={value}
-				onChange={e => onChange(e.target.value)}
-			/>
-			{err !== '' && <p className={css.err}>{err}</p>}
+			{dropdown ? (
+				<select onChange={e => onChange(e.target.value)}>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+			) : (
+				<>
+					<input
+						id={id}
+						type={type}
+						autoFocus={autoFocus}
+						required
+						value={value}
+						placeholder={placeholder}
+						onChange={e => onChange(e.target.value)}
+					/>
+				</>
+			)}
 		</div>
 	);
 };
