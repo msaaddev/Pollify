@@ -77,3 +77,6 @@ settings.dat
 
 # next
 .next/
+
+# env
+.env.local
