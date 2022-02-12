@@ -13,6 +13,7 @@ import {
 // components
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
+import HelperMsg from 'components/common/HelperMsg';
 
 // context
 import { AuthContext } from 'components/context/AuthContext';
@@ -125,8 +126,8 @@ const Login = () => {
 	};
 
 	return (
-		<>
-			<main className={css.container}>
+		<div className={css.container}>
+			{/* <main className={css.container}>
 				<Input
 					htmlFor="phone_number"
 					label="Phone Number"
@@ -139,8 +140,39 @@ const Login = () => {
 				<div id="recaptcha-container"></div>
 				<Button label="Login" onClick={handleLoginWithPhoneNum} />
 			</main>
+			<PopupboxContainer {...popupboxConfig} /> */}
+
+			<div className={css.left_container}>
+				<div className={css.top}>
+					<img src="/polling.png" alt="logo" />
+					<h2>Pollify</h2>
+				</div>
+				<div className={css.wrapper}>
+					<h2 className={css.heading}>Create an Account</h2>
+					<Input
+						htmlFor="phone_number"
+						label="Phone Number"
+						placeholder="Enter your phone number..."
+						type="text"
+						value={phoneNum}
+						onChange={setPhoneNum}
+					/>
+					{err ? <p className={css.err}>{err}</p> : null}
+					<div id="recaptcha-container"></div>
+					<Button label="Login" onClick={handleLoginWithPhoneNum} />
+
+					{err ? <p className={css.err}>{err}</p> : null}
+					<div id="recaptcha-container"></div>
+					<HelperMsg
+						content="Don't have an account?"
+						option="Register"
+						url="signup"
+					/>
+				</div>
+			</div>
+			<div className={css.right_container}></div>
 			<PopupboxContainer {...popupboxConfig} />
-		</>
+		</div>
 	);
 };
 

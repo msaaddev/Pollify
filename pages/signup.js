@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox';
 import 'react-popupbox/dist/react-popupbox.css';
+import Image from 'next/image';
 
 // firebase
 import {
@@ -16,6 +17,7 @@ import {
 // components
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
+import HelperMsg from 'components/common/HelperMsg';
 
 // context
 import { AuthContext } from 'components/context/AuthContext';
@@ -137,45 +139,72 @@ const SignUp = () => {
 	};
 
 	return (
-		<>
-			<main className={css.container}>
-				<Input
-					htmlFor="name"
-					label="Name"
-					placeholder="Enter your name..."
-					type="text"
-					autoFocus={true}
-					value={name}
-					onChange={setName}
-				/>
-				<Input
-					htmlFor="country"
-					label="Country"
-					placeholder="Enter your country..."
-					type="text"
-					value={country}
-					onChange={setCountry}
-				/>
-				<Input
-					htmlFor="phone_number"
-					label="Phone Number"
-					placeholder="Enter your phone number..."
-					type="text"
-					value={phoneNum}
-					onChange={setPhoneNum}
-				/>
-				<Input
-					label="Gender"
-					value={gender}
-					onChange={setGender}
-					dropdown
-				/>
-				{err ? <p className={css.err}>{err}</p> : null}
-				<div id="recaptcha-container"></div>
-				<Button label="Sign Up" onClick={handleLoginWithPhoneNum} />
-			</main>
+		<div className={css.container}>
+			<div className={css.left_container}>
+				<h2>
+					<span>
+						Register <br />
+					</span>{' '}
+					Yourself
+				</h2>
+				<p>
+					Capture feedback and make decisions online with the Pollify
+					app. Pollify allows you to create and conduct fun polls,
+					cast votes for your favourite ideas and start discussions
+					with people from all over the web. All just one click away.
+					Get yourself registered to use the app.
+				</p>
+			</div>
+			<div className={css.right_container}>
+				<div className={css.top}>
+					<img src="/polling.png" alt="logo" />
+					<h2>Pollify</h2>
+				</div>
+				<div className={css.wrapper}>
+					<h2 className={css.heading}>Create an Account</h2>
+					<Input
+						htmlFor="name"
+						label="Name"
+						placeholder="Enter your name..."
+						type="text"
+						autoFocus={true}
+						value={name}
+						onChange={setName}
+					/>
+					<Input
+						htmlFor="country"
+						label="Country"
+						placeholder="Enter your country..."
+						type="text"
+						value={country}
+						onChange={setCountry}
+					/>
+					<Input
+						htmlFor="phone_number"
+						label="Phone Number"
+						placeholder="Enter your phone number..."
+						type="text"
+						value={phoneNum}
+						onChange={setPhoneNum}
+					/>
+					<Input
+						label="Gender"
+						value={gender}
+						onChange={setGender}
+						dropdown
+					/>
+					{err ? <p className={css.err}>{err}</p> : null}
+					<div id="recaptcha-container"></div>
+					<Button label="Sign Up" onClick={handleLoginWithPhoneNum} />
+					<HelperMsg
+						content="Already have an account?"
+						option="Sign in"
+						url="login"
+					/>
+				</div>
+			</div>
 			<PopupboxContainer {...popupboxConfig} />
-		</>
+		</div>
 	);
 };
 

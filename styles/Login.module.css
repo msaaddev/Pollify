@@ -1,13 +1,89 @@
-/* sign up page css */
+ /* login page css */
 
 .container {
 	display: flex;
 	height: 100vh;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }
 
+.right_container {
+	flex: 1.8;
+	background-image: url('../public/login.jpg');
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	padding: 150px 0 0 100px;
+
+}
+
+.right_container h2 {
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif;
+	font-size: 3rem;
+	margin-bottom: 10px;
+}
+
+.right_container h2 span {
+	color: #3981F5;
+	font-size: 5rem;
+}
+
+.right_container p {
+	width: 500px;
+	color: #ffffff;
+	font-family: 'Raleway', sans-serif;
+	/* letter-spacing: 5px; */
+	line-height: 28px;
+}
+
+.left_container {
+	background-color: #f6fafd;
+	flex: 1.2;
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+.heading, .top {
+	font-size: 32px;
+	font-family: 'Raleway', sans-serif;
+	color: #3981F5;
+
+}
+
+.top {
+	display: flex;
+	margin-left: 60px;
+	margin-top: 20px;
+	height: 20px;
+	font-size: 23px;
+	height: 20px;
+}
+
+.top h2 {
+	margin-left: 20px;
+}
+
+.top img {
+	width: 40px;
+	height: 40px;
+	margin-top: 30px;
+}
+
+.wrapper {
+	border-top: 1px solid rgba(57, 129, 245, 0.3);
+	height: 580px;
+	width: 450px;
+	margin-bottom: 100px;
+	margin-left: 35px;
+	padding-left: 30px;
+}
+
+.img_wrapper {
+	height: 10px;
+}
 
 .err {
 	padding: 0;
