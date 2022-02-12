@@ -1,9 +1,8 @@
 import { initializeApp } from 'firebase/app';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
+
 import {
 	getAuth,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-	onAuthStateChanged,
 	signOut,
 	RecaptchaVerifier,
 	signInWithPhoneNumber
@@ -22,10 +21,10 @@ initializeApp(config);
 
 export {
 	getAuth,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
 	signInWithPhoneNumber,
-	onAuthStateChanged,
 	RecaptchaVerifier,
-	signOut
+	signOut,
+	getFirestore,
+	setDoc,
+	doc
 };
