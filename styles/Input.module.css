@@ -11,7 +11,8 @@
 	font-weight: 500;
 }
 
-.wrapper input {
+
+.input {
 	width: 100%;
 	border: none;
 	outline: none;
@@ -23,16 +24,11 @@
 	font-size: 14px;
 }
 
-.wrapper select {
-	width: 100%;
-	border: none;
-	outline: none;
-	font-size: 19px;
-	padding: 10px;
-	background: rgba(225, 237, 248, 0.6);
-	letter-spacing: 1px;
-	font-weight: 200;
-	font-size: 14px;
+.wrapper textarea {
+	font-weight: 400;
+	height: 150px;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 @media screen and (max-width: 768px) {

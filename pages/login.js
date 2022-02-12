@@ -127,28 +127,13 @@ const Login = () => {
 
 	return (
 		<div className={css.container}>
-			{/* <main className={css.container}>
-				<Input
-					htmlFor="phone_number"
-					label="Phone Number"
-					placeholder="Enter your phone number..."
-					type="text"
-					value={phoneNum}
-					onChange={setPhoneNum}
-				/>
-				{err ? <p className={css.err}>{err}</p> : null}
-				<div id="recaptcha-container"></div>
-				<Button label="Login" onClick={handleLoginWithPhoneNum} />
-			</main>
-			<PopupboxContainer {...popupboxConfig} /> */}
-
 			<div className={css.left_container}>
 				<div className={css.top}>
 					<img src="/polling.png" alt="logo" />
 					<h2>Pollify</h2>
 				</div>
 				<div className={css.wrapper}>
-					<h2 className={css.heading}>Create an Account</h2>
+					<h2 className={css.heading}>Log into Existing Account</h2>
 					<Input
 						htmlFor="phone_number"
 						label="Phone Number"

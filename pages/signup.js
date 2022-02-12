@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox';
 import 'react-popupbox/dist/react-popupbox.css';
-import Image from 'next/image';
 
 // firebase
 import {
@@ -132,6 +131,7 @@ const SignUp = () => {
 				});
 
 				window.confirmationResult = confirmationResult;
+				router.push('/dashboard');
 			})
 			.catch(error => {
 				console.log(error);

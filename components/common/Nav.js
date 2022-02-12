@@ -12,7 +12,7 @@ const Nav = () => {
 				<Link href="/create">
 					<a className={css.option}>Create Poll</a>
 				</Link>
-				<Link href="/signup">
+				<Link href="/login">
 					<a className={css.option}>Logout</a>
 				</Link>
 			</div>

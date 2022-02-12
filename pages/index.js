@@ -19,9 +19,7 @@ export default function Home() {
 	const handleLogout = () => {
 		const auth = getAuth();
 		signOut(auth)
-			.then(() => {
-				setEmail('');
-			})
+			.then(() => {})
 			.catch(err => {
 				console.log(err);
 			});
