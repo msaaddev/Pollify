@@ -148,14 +148,11 @@ const SignUp = () => {
 					Yourself
 				</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					Duis aute irure dolor in reprehenderit in voluptate velit
-					esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-					occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum
+					Capture feedback and make decisions online with the Pollify
+					app. Pollify allows you to create and conduct fun polls,
+					cast votes for your favourite ideas and start discussions
+					with people from all over the web. All just one click away.
+					Get yourself registered to use the app.
 				</p>
 			</div>
 			<div className={css.right_container}>
