@@ -1,0 +1,32 @@
+/* styles */
+
+.container {
+	width: 300px;
+	margin-top: 20px;
+	display: flex;
+	font-family: 'Raleway', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.container p span {
+	text-decoration: underline;
+	cursor: pointer;
+	transition: ease-in-out 0.4s;
+	padding: 2px 5px;
+	border-radius: 3px;
+}
+
+.container p span:hover {
+	background-color: rgba(57, 129, 245, 0.9);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.err {
+	padding: 0;
+	margin: 2px 0;
+	font-size: 14px;
+	font-weight: 500;
+	color: red;
+}

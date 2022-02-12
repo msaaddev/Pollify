@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox';
 import 'react-popupbox/dist/react-popupbox.css';
+import Image from 'next/image';
 
 // firebase
 import {
@@ -16,6 +17,7 @@ import {
 // components
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
+import HelperMsg from 'components/common/HelperMsg';
 
 // context
 import { AuthContext } from 'components/context/AuthContext';
@@ -137,45 +139,75 @@ const SignUp = () => {
 	};
 
 	return (
-		<>
-			<main className={css.container}>
-				<Input
-					htmlFor="name"
-					label="Name"
-					placeholder="Enter your name..."
-					type="text"
-					autoFocus={true}
-					value={name}
-					onChange={setName}
-				/>
-				<Input
-					htmlFor="country"
-					label="Country"
-					placeholder="Enter your country..."
-					type="text"
-					value={country}
-					onChange={setCountry}
-				/>
-				<Input
-					htmlFor="phone_number"
-					label="Phone Number"
-					placeholder="Enter your phone number..."
-					type="text"
-					value={phoneNum}
-					onChange={setPhoneNum}
-				/>
-				<Input
-					label="Gender"
-					value={gender}
-					onChange={setGender}
-					dropdown
-				/>
-				{err ? <p className={css.err}>{err}</p> : null}
-				<div id="recaptcha-container"></div>
-				<Button label="Sign Up" onClick={handleLoginWithPhoneNum} />
-			</main>
+		<div className={css.container}>
+			<div className={css.left_container}>
+				<h2>
+					<span>
+						Register <br />
+					</span>{' '}
+					Yourself
+				</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna
+					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+					ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					Duis aute irure dolor in reprehenderit in voluptate velit
+					esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+					occaecat cupidatat non proident, sunt in culpa qui officia
+					deserunt mollit anim id est laborum
+				</p>
+			</div>
+			<div className={css.right_container}>
+				<div className={css.top}>
+					<img src="/polling.png" alt="logo" />
+					<h2>Pollify</h2>
+				</div>
+				<div className={css.wrapper}>
+					<h2 className={css.heading}>Create an Account</h2>
+					<Input
+						htmlFor="name"
+						label="Name"
+						placeholder="Enter your name..."
+						type="text"
+						autoFocus={true}
+						value={name}
+						onChange={setName}
+					/>
+					<Input
+						htmlFor="country"
+						label="Country"
+						placeholder="Enter your country..."
+						type="text"
+						value={country}
+						onChange={setCountry}
+					/>
+					<Input
+						htmlFor="phone_number"
+						label="Phone Number"
+						placeholder="Enter your phone number..."
+						type="text"
+						value={phoneNum}
+						onChange={setPhoneNum}
+					/>
+					<Input
+						label="Gender"
+						value={gender}
+						onChange={setGender}
+						dropdown
+					/>
+					{err ? <p className={css.err}>{err}</p> : null}
+					<div id="recaptcha-container"></div>
+					<Button label="Sign Up" onClick={handleLoginWithPhoneNum} />
+					<HelperMsg
+						content="Already have an account?"
+						option="Sign in"
+						url="login"
+					/>
+				</div>
+			</div>
 			<PopupboxContainer {...popupboxConfig} />
-		</>
+		</div>
 	);
 };
 
