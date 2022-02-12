@@ -34,3 +34,9 @@
 	font-weight: 200;
 	font-size: 14px;
 }
+
+@media screen and (max-width: 768px) {
+	.wrapper {
+		width: 250px;
+	}
+}

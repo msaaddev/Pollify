@@ -92,3 +92,55 @@
 	font-weight: 500;
 	color: red;
 }
+
+@media screen and (max-width: 768px) {
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.right_container {
+		padding: 80px 0 80px 100px;
+	}
+
+	.right_container h2 span {
+		color: #3981f5;
+		font-size: 2.5rem;
+	}
+
+	.right_container h2 {
+		font-size: 2rem;
+	}
+
+	.right_container p {
+		width: 200px;
+		color: #ffffff;
+		font-family: 'Raleway', sans-serif;
+		line-height: 28px;
+	}
+
+	.top {
+		margin-left: 0;
+	}
+
+	.heading,
+	.top {
+		font-size: 20px;
+		font-family: 'Raleway', sans-serif;
+		color: #3981f5;
+	}
+
+	.wrapper {
+		height: 400px;
+		width: 300px;
+		padding-left: 0;
+		margin-bottom: 0;
+		margin-top: 80px;
+	}
+
+	.left_container {
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
