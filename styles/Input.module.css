@@ -6,7 +6,8 @@
 }
 
 .wrapper label {
-	padding-bottom: 5px;
+	display: inline-block;
+	margin-bottom: 10px;
 	font-weight: 500;
 }
 
@@ -22,10 +23,14 @@
 	font-size: 14px;
 }
 
-.err {
-	padding: 0;
-	margin: 2px 0;
+.wrapper select {
+	width: 100%;
+	border: none;
+	outline: none;
+	font-size: 19px;
+	padding: 10px;
+	background: rgba(225, 237, 248, 0.6);
+	letter-spacing: 1px;
+	font-weight: 200;
 	font-size: 14px;
-	font-weight: 500;
-	color: red;
 }
