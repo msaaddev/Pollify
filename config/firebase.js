@@ -4,7 +4,9 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
-	signOut
+	signOut,
+	RecaptchaVerifier,
+	signInWithPhoneNumber
 } from 'firebase/auth';
 
 const config = {
@@ -22,6 +24,8 @@ export {
 	getAuth,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	signInWithPhoneNumber,
 	onAuthStateChanged,
+	RecaptchaVerifier,
 	signOut
 };

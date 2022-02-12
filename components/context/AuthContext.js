@@ -6,6 +6,8 @@ const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [phoneNum, setPhoneNum] = useState('');
+	const [phoneNumErr, setPhoneNumErr] = useState('');
 	const [emailErr, setEmailErr] = useState('');
 	const [passwordErr, setPasswordErr] = useState('');
 
@@ -18,6 +20,10 @@ const AuthProvider = ({ children }) => {
 				setEmail,
 				password,
 				setPassword,
+				phoneNum,
+				setPhoneNum,
+				phoneNumErr,
+				setPhoneNumErr,
 				emailErr,
 				setEmailErr,
 				passwordErr,
