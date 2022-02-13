@@ -50,20 +50,22 @@ const PollForm = ({
 
 		setOptionValues(temp);
 
+		console.log(allPolls);
+
 		const allPollTempArr = [
 			...allPolls.pollList,
 			{
+				id: Math.random() * 1000000,
 				pollname,
 				description,
 				options: temp
 			}
 		];
 
-		console.log('polls', allPolls.pollList);
-
 		const userDataArr = [
 			...userData.pollList,
 			{
+				id: Math.random() * 1000000,
 				pollname,
 				description,
 				options: temp
@@ -84,7 +86,6 @@ const PollForm = ({
 			await updateDoc(data, {
 				pollList: allPollTempArr
 			});
-
 			router.push('/dashboard');
 		} catch (err) {
 			console.log(err);

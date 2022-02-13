@@ -3,8 +3,8 @@ import { useState, createContext } from 'react';
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-	const [allPolls, setAllPolls] = useState([]);
-	const [userData, setUserData] = useState([]);
+	const [allPolls, setAllPolls] = useState({ pollList: [] });
+	const [userData, setUserData] = useState({ pollList: [] });
 
 	return (
 		<AppContext.Provider

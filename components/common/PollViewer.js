@@ -20,9 +20,8 @@ const PollViewer = ({
 			<h2>Options</h2>
 			<form>
 				{options.map(option => (
-					<>
+					<div key={Math.random() * 1000}>
 						<input
-							key={Math.random() * 1000}
 							type="radio"
 							value={option}
 							name="option"
@@ -30,7 +29,7 @@ const PollViewer = ({
 						/>
 						<label htmlFor={option}>{option}</label>
 						<br />
-					</>
+					</div>
 				))}
 			</form>
 			<div className={css.btn_wrapper}>
