@@ -1,0 +1,73 @@
+/* styles */
+
+.container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.sub_container {
+	width: 700px;
+}
+
+.tagline {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tagline h2 {
+	font-size: 2rem;
+	font-weight: 900;
+	font-family: 'Raleway', sans-serif;
+	margin-bottom: 0;
+	background-color: #fff;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(
+		180deg,
+		rgba(57, 129, 245, 0.9),
+		rgba(24, 75, 158, 0.9)
+	);
+}
+
+.tagline h3 {
+	font-family: 'Raleway', sans-serif;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(
+		180deg,
+		rgba(57, 129, 245, 0.9),
+		rgba(28, 108, 238, 0.9)
+	);
+}
+
+.form {
+	margin: 40px 0;
+	border: solid 1px #e1edf8;
+	height: 100%;
+}
+
+.form_section_btns {
+	display: flex;
+}
+
+.form_section_btns h3 {
+	color: #5a5a5a;
+}
+
+.create_job,
+.preview {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	border-bottom: solid 1px #e1edf8;
+	cursor: pointer;
+}
+
+.border {
+	border-bottom: solid 4px rgba(57, 129, 245, 0.9);
+}

@@ -1,0 +1,41 @@
+/* nav component styles */
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	height: 110px;
+	align-items: center;
+	border-bottom: 1px solid #3981f5;
+}
+
+.logo {
+	display: flex;
+	margin-left: 100px;
+}
+
+.logo img {
+	width: 40px;
+	height: 40px;
+	margin-top: 20px;
+}
+
+.logo h2 {
+	margin-left: 20px;
+}
+
+.options {
+	display: flex;
+	margin-right: 100px;
+}
+
+.para_option {
+	padding: 23px 20px 20px 20px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+	height: 70px;
+	cursor: pointer;
+}
+
+.option:hover, .para_option:hover {
+	border-bottom: 3px solid #3981f5;
+}

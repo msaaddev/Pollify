@@ -1,0 +1,46 @@
+/* dashboard styles */
+
+.container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.sub_container {
+	width: 700px;
+}
+
+.tagline {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tagline h2 {
+	font-size: 2rem;
+	font-weight: 900;
+	font-family: 'Raleway', sans-serif;
+	margin-bottom: 0;
+	background-color: #fff;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(
+		180deg,
+		rgba(57, 129, 245, 0.9),
+		rgba(24, 75, 158, 0.9)
+	);
+}
+
+.tagline h3 {
+	font-family: 'Raleway', sans-serif;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(
+		180deg,
+		rgba(57, 129, 245, 0.9),
+		rgba(28, 108, 238, 0.9)
+	);
+}

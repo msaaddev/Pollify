@@ -26,4 +26,26 @@
 	box-shadow: inset 0 0px 10px 3px rgba(57, 129, 245, 0.9),
 		0 0px 10px 3px rgba(57, 129, 245, 0.9);
 }
-/* #3981F5 */
+
+.optionBtn {
+	outline: none;
+	border: #3981F5 solid 1px;
+	font-weight: 500;
+	font-family: 'Raleway', sans-serif;
+	width: 100px;
+	padding: 11px 0;
+	cursor: pointer;
+	color: #ffffff;
+	border-radius: 3px;
+	background:#3981F5;
+	transition: 0.5s all;
+}
+
+.optionBtn:last-child {
+	margin: 0 10px;
+}
+
+.optionBtn:hover {
+	background: #ffffff;
+	color: #000000;
+}

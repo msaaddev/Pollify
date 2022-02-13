@@ -7,7 +7,10 @@ import 'react-popupbox/dist/react-popupbox.css';
 import {
 	getAuth,
 	RecaptchaVerifier,
-	signInWithPhoneNumber
+	signInWithPhoneNumber,
+	getDoc,
+	doc,
+	getFirestore
 } from 'config/firebase';
 
 // components
@@ -17,12 +20,14 @@ import HelperMsg from 'components/common/HelperMsg';
 
 // context
 import { AuthContext } from 'components/context/AuthContext';
+import { AppContext } from 'components/context/AppContext';
 
 // stylesheet
 import css from 'styles/Login.module.css';
 
 const Login = () => {
 	const { setUser } = useContext(AuthContext);
+	const { setUserData } = useContext(AppContext);
 	const [code, setCode] = useState('');
 	const [phoneNum, setPhoneNum] = useState('');
 	const [err, setErr] = useState('');
@@ -84,71 +89,66 @@ const Login = () => {
 	/**
 	 *
 	 *
-	 * reset values of errors to empty string
-	 */
-	const clearErrs = () => {
-		setErr('');
-	};
-
-	/**
-	 *
-	 *
 	 * Sign in via phone number
 	 */
 	const handleLoginWithPhoneNum = e => {
 		e.preventDefault();
-		clearErrs();
-
+		setErr('');
+		const db = getFirestore();
 		const appVerifier = window.recaptchaVerifier;
 
-		signInWithPhoneNumber(auth, phoneNum, appVerifier)
-			.then(confirmationResult => {
-				openPopupbox();
+		if (phoneNum !== '') {
+			const docRef = doc(db, 'userData', phoneNum);
+			getDoc(docRef).then(doc => {
+				const userExists = doc.exists();
+				if (userExists) {
+					signInWithPhoneNumber(auth, phoneNum, appVerifier)
+						.then(confirmationResult => {
+							openPopupbox().then(() => {
+								const code =
+									document.getElementById('code').value;
+								confirmationResult
+									.confirm(code)
+									.then(result => {
+										const user = result.user;
+										setUser(user);
+										setUserData(doc.data());
+										localStorage.setItem(
+											'userData',
+											JSON.stringify(doc.data())
+										);
+										localStorage.setItem(
+											'user',
+											JSON.stringify(user)
+										);
+										router.push('/dashboard');
+									})
+									.catch(err => {
+										setErr(JSON.stringify(err.code));
+									});
+							});
 
-				openPopupbox().then(() => {
-					const code = document.getElementById('code').value;
-					confirmationResult
-						.confirm(code)
-						.then(result => {
-							const user = result.user;
-							setUser(user);
+							window.confirmationResult = confirmationResult;
 						})
-						.catch(err => {
-							setErr(JSON.stringify(err.code));
+						.catch(error => {
+							console.log(error);
 						});
-				});
-
-				window.confirmationResult = confirmationResult;
-			})
-			.catch(error => {
-				console.log(error);
+				} else {
+					setErr('User does not exist. Sign up first.');
+				}
 			});
+		}
 	};
 
 	return (
 		<div className={css.container}>
-			{/* <main className={css.container}>
-				<Input
-					htmlFor="phone_number"
-					label="Phone Number"
-					placeholder="Enter your phone number..."
-					type="text"
-					value={phoneNum}
-					onChange={setPhoneNum}
-				/>
-				{err ? <p className={css.err}>{err}</p> : null}
-				<div id="recaptcha-container"></div>
-				<Button label="Login" onClick={handleLoginWithPhoneNum} />
-			</main>
-			<PopupboxContainer {...popupboxConfig} /> */}
-
 			<div className={css.left_container}>
 				<div className={css.top}>
 					<img src="/polling.png" alt="logo" />
 					<h2>Pollify</h2>
 				</div>
 				<div className={css.wrapper}>
-					<h2 className={css.heading}>Create an Account</h2>
+					<h2 className={css.heading}>Log into Existing Account</h2>
 					<Input
 						htmlFor="phone_number"
 						label="Phone Number"
@@ -157,7 +157,6 @@ const Login = () => {
 						value={phoneNum}
 						onChange={setPhoneNum}
 					/>
-					{err ? <p className={css.err}>{err}</p> : null}
 					<div id="recaptcha-container"></div>
 					<Button label="Login" onClick={handleLoginWithPhoneNum} />
 
