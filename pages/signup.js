@@ -10,7 +10,8 @@ import {
 	signInWithPhoneNumber,
 	getFirestore,
 	setDoc,
-	doc
+	doc,
+	getDoc
 } from 'config/firebase';
 
 // components
@@ -107,35 +108,53 @@ const SignUp = () => {
 		const db = getFirestore();
 		const appVerifier = window.recaptchaVerifier;
 
-		signInWithPhoneNumber(auth, phoneNum, appVerifier)
-			.then(confirmationResult => {
-				// get code from user
-				openPopupbox().then(() => {
-					const code = document.getElementById('code').value;
-					confirmationResult
-						.confirm(code)
-						.then(result => {
-							const user = result.user;
-							setUser(user);
+		if (phoneNum !== '') {
+			const docRef = doc(db, 'userData', phoneNum);
+			getDoc(docRef).then(doc => {
+				const userExists = doc.exists();
+				if (!userExists) {
+					signInWithPhoneNumber(auth, phoneNum, appVerifier)
+						.then(confirmationResult => {
+							// get code from user
+							openPopupbox().then(() => {
+								const code =
+									document.getElementById('code').value;
+								confirmationResult
+									.confirm(code)
+									.then(result => {
+										const user = result.user;
+										setUser(user);
+
+										setDoc(doc(db, 'userData', phoneNum), {
+											name,
+											gender,
+											phoneNum,
+											pollList: []
+										})
+											.then(() => {
+												router.push('/dashboard');
+											})
+											.catch(err => {
+												console.log(err);
+											});
+									})
+									.catch(err => {
+										setErr(JSON.stringify(err.code));
+									});
+							});
+
+							window.confirmationResult = confirmationResult;
 						})
-						.catch(err => {
-							setErr(JSON.stringify(err.code));
+						.catch(error => {
+							console.log(error);
 						});
-
-					setDoc(doc(db, 'userData', phoneNum), {
-						name,
-						gender,
-						phoneNum,
-						pollList: []
-					});
-				});
-
-				window.confirmationResult = confirmationResult;
-				router.push('/dashboard');
-			})
-			.catch(error => {
-				console.log(error);
+				} else {
+					setErr(
+						'User already exists. Try changing the phone number.'
+					);
+				}
 			});
+		}
 	};
 
 	return (
@@ -193,9 +212,9 @@ const SignUp = () => {
 						onChange={setGender}
 						dropdown
 					/>
+					<Button label="Sign Up" onClick={handleLoginWithPhoneNum} />
 					{err ? <p className={css.err}>{err}</p> : null}
 					<div id="recaptcha-container"></div>
-					<Button label="Sign Up" onClick={handleLoginWithPhoneNum} />
 					<HelperMsg
 						content="Already have an account?"
 						option="Sign in"

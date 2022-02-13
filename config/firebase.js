@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, setDoc, doc } from 'firebase/firestore';
+import {
+	getFirestore,
+	setDoc,
+	doc,
+	getDoc,
+	updateDoc
+} from 'firebase/firestore';
 
 import {
 	getAuth,
@@ -26,5 +32,7 @@ export {
 	signOut,
 	getFirestore,
 	setDoc,
-	doc
+	doc,
+	getDoc,
+	updateDoc
 };

@@ -1,15 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
 import css from 'styles/Create.module.css';
 
 // components
 import Nav from 'components/common/Nav';
 import PollForm from 'components/pollForm';
 
+// context
+import { AppContext } from 'components/context/AppContext';
+
 const Create = () => {
+	const { setUserData } = useContext(AppContext);
 	const [pollname, setPollname] = useState('');
 	const [description, setDescription] = useState('');
 	const [options, setOptions] = useState([1, 2]);
 	const [optionValues, setOptionValues] = useState([]);
+	const router = useRouter();
+
+	useEffect(() => {
+		if (typeof window !== undefined) {
+			let data = localStorage.getItem('user');
+			data = JSON.parse(data);
+			if (!data) {
+				router.push('/login');
+			}
+
+			data = localStorage.getItem('userData');
+			data = JSON.parse(data);
+			setUserData(data);
+		}
+	}, []);
 
 	return (
 		<>

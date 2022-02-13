@@ -4,12 +4,15 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
 	const [allPolls, setAllPolls] = useState([]);
+	const [userData, setUserData] = useState([]);
 
 	return (
 		<AppContext.Provider
 			value={{
 				allPolls,
-				setAllPolls
+				setAllPolls,
+				userData,
+				setUserData
 			}}
 		>
 			{children}

@@ -9,6 +9,9 @@ import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import css from 'styles/PollForm.module.css';
 
+// firebase
+import { updateDoc, doc, getFirestore } from 'config/firebase';
+
 const PollForm = ({
 	pollname,
 	description,
@@ -21,6 +24,7 @@ const PollForm = ({
 }) => {
 	const [option, setOption] = useState('');
 	const { allPolls, setAllPolls } = useContext(AppContext);
+	const { userData, setUserData } = useContext(AppContext);
 	const router = useRouter();
 
 	/**
@@ -28,7 +32,7 @@ const PollForm = ({
 	 *
 	 * set value of options
 	 */
-	const hanldeCreatePoll = () => {
+	const hanldeCreatePoll = async () => {
 		let optionsArr = [];
 
 		options.map(option => {
@@ -47,7 +51,18 @@ const PollForm = ({
 		setOptionValues(temp);
 
 		const allPollTempArr = [
-			...allPolls,
+			...allPolls.pollList,
+			{
+				pollname,
+				description,
+				options: temp
+			}
+		];
+
+		console.log('polls', allPolls.pollList);
+
+		const userDataArr = [
+			...userData.pollList,
 			{
 				pollname,
 				description,
@@ -56,7 +71,24 @@ const PollForm = ({
 		];
 
 		setAllPolls(allPollTempArr);
-		router.push('/dashboard');
+
+		try {
+			const db = getFirestore();
+			let data = doc(db, 'userData', userData.phoneNum);
+			await updateDoc(data, {
+				pollList: userDataArr
+			});
+
+			data = doc(db, 'allPolls', 'polls');
+
+			await updateDoc(data, {
+				pollList: allPollTempArr
+			});
+
+			router.push('/dashboard');
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	/**
