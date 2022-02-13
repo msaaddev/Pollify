@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
+
+// context
+import { AppContext } from 'components/context/AppContext';
 
 // components
 import Input from 'components/common/Input';
@@ -17,6 +20,7 @@ const PollForm = ({
 	setOptionValues
 }) => {
 	const [option, setOption] = useState('');
+	const { allPolls, setAllPolls } = useContext(AppContext);
 	const router = useRouter();
 
 	/**
@@ -41,6 +45,17 @@ const PollForm = ({
 		}
 
 		setOptionValues(temp);
+
+		const allPollTempArr = [
+			...allPolls,
+			{
+				pollname,
+				description,
+				options: temp
+			}
+		];
+
+		setAllPolls(allPollTempArr);
 		router.push('/dashboard');
 	};
 

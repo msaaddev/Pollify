@@ -1,0 +1,36 @@
+/* pollviewer component styles */
+
+.poll_container {
+	margin: 40px 0;
+	width: 700px;
+	box-shadow: 0 0px 30px #e1edf8;
+	padding: 40px 50px;
+}
+
+.poll_container h2 {
+	color: rgba(24, 75, 158, 0.9);
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif;
+	margin-bottom: 10px;
+}
+
+.poll_container p {
+	margin-bottom: 30px;
+	line-height: 24px;
+}
+
+.poll_container form {
+	padding-left: 15px;
+	line-height: 28px;
+}
+
+.poll_container label {
+	padding-left: 15px;
+
+}
+
+.btn_wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
