@@ -1,56 +1,38 @@
-import { useContext } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import css from 'styles/Home.module.css';
 
-// config
-import { getAuth, signOut } from 'config/firebase';
-
-// context
-import { AuthContext } from 'components/context/AuthContext';
+import Button from 'components/common/Button';
 
 export default function Home() {
-	const { email, setEmail } = useContext(AuthContext);
-
-	/**
-	 *
-	 *
-	 * logout user
-	 */
-	const handleLogout = () => {
-		const auth = getAuth();
-		signOut(auth)
-			.then(() => {})
-			.catch(err => {
-				console.log(err);
-			});
-	};
+	const router = useRouter();
 
 	return (
-		<div className={css.container}>
-			<main className={css.main}>
-				{email !== '' ? (
-					<div className={css.user}>
-						{' '}
-						<p>User email: {email}</p>
-						<button className={css.button} onClick={handleLogout}>
-							Logout
-						</button>
+		<div className={css.info_container_frtui}>
+			<div className={css.sub_container_frtui}>
+				<div className={css.content_frtui}>
+					<div className={css.heading_frtui}>
+						<h1>Pollify</h1>
 					</div>
-				) : (
-					<>
-						<Link href="/login" passHref>
-							<button className={css.button}>
-								Go To Login Page →{' '}
-							</button>
-						</Link>
-						<Link href="/signup" passHref>
-							<button className={css.button}>
-								Go To Sign Up Page →{' '}
-							</button>
-						</Link>
-					</>
-				)}
-			</main>
+					<div className={css.tagline_frtui}>
+						<p className={css.tagline_head_frtui}>
+							Want a Voting System?!
+						</p>
+						<p className={css.tagline_text_frtui}>
+							Check out Pollify where you can do create polls,
+							comment on them, and vote on them.
+						</p>
+					</div>
+					<div className={css.button_frtui}>
+						<Button
+							onClick={() => router.push('/signup')}
+							label="Register"
+						/>
+					</div>
+				</div>
+				<div className={css.img_frtui}>
+					<img src="./img.svg" alt="Landing Image" />
+				</div>
+			</div>
 		</div>
 	);
 }

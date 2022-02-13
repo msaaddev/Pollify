@@ -1,49 +1,91 @@
-.container {
-	min-height: 100vh;
-	padding: 0 0.5rem;
+/* styles */
+
+.info_container_frtui {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sub_container_frtui {
+    margin: 20px;
+    height: 95vh;
+    width: 97%;
+    background-color: #e1e3f5;
+    border-radius: 25px;
+    display: flex;
+}
+
+.content_frtui {
+    margin: 30px 0px 40px 90px;
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading_frtui {
+    margin: 0;
+    color: rgba(57, 129, 245, 0.9);
+    flex: 1;
+}
+
+.heading_frtui h1 {
+    cursor: pointer;
+    font-family: 'airways', sans-serif;
+    font-size: 3rem;
+}
+
+.tagline_frtui {
+    margin: 0;
+    flex: 1.5;
+}
+
+.tagline_head_frtui {
+    margin: 0;
+    text-transform: uppercase;
+    color: rgba(57, 129, 245, 0.9);
+    font-size: 3em;
+    font-weight: 800;
+}
+
+.tagline_text_frtui {
+    font-family: 'Open Sans', sans-serif;
+    margin: 20px 0px 0px 0px;
+    color: #797384;
+    font-weight: 600;
+}
+
+.button_frtui {
+    margin: 0;
+    flex: 1.5;
+}
+
+.button_frtui button {
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    font-size: 1em;
+    background-color: rgba(57, 129, 245, 0.9);
+    color: #ffffff;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: rgba(57, 129, 245, 0.9) 0px 0px 10px;
+    transition: all 0.3s;
+}
+
+.button_frtui button:hover {
+    cursor: pointer;
+    box-shadow: rgba(57, 129, 245, 0.9) 2px 2px 20px;
+}
+
+.img_frtui {
+    margin: 0;
+    flex: 1.6;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-.main {
-	padding: 5rem 0;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 }
 
-.button {
-	margin-top: 20px;
-	outline: none;
-	border: none;
-	font-weight: 500;
-	font-family: 'Raleway', sans-serif;
-	width: 300px;
-	padding: 11px 0;
-	cursor: pointer;
-	color: #ffffff;
-	border-radius: 3px;
-	background: radial-gradient(
-		ellipse at left bottom,
-		rgba(22, 24, 47, 1) 0%,
-		rgba(38, 20, 72, 0.9) 59%,
-		rgba(17, 27, 75, 0.9) 100%
-	);
-	box-shadow: inset 0 5px 10px 3px rgba(17, 27, 75, 0.9),
-		0 5px 10px 3px rgba(17, 27, 75, 0.9);
-	transition: 0.5s all;
-}
-
-.button:hover {
-	box-shadow: inset 0 0px 10px 3px rgba(17, 27, 75, 0.9),
-		0 0px 10px 3px rgba(17, 27, 75, 0.9);
-}
-
-.user p {
-	font-weight: 600;
+.img_frtui img {
+    width: 80%;
 }
